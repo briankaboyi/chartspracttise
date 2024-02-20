@@ -6,3 +6,4 @@ class ChartData{
   final Color color;
   ChartData(this.title,this.val,this.color);
 }
+
