@@ -5,24 +5,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController {
+  List<String> myDataList=['one','two','three','four','five'];
   String inputValue= "";
-  testInput(){
-    print(inputValue);
-  }
+  var content;
+
 
   late List<ChartData> dataOne;
 
   late List<ChartData> dataTwo;
 
-  /////////////////
   var myDate = DateTime.now();
   var myDateForat;
   String currentDate = '';
 
   HomeController() {
     currentDate = '${myDate.day}-${myDate.month}-${myDate.year}';
+ 
   }
-////////////////////
   List<Map<String, dynamic>> myData = [
     {"title": "data 1", "value": "100"},
     {"title": "data 2", "value": "200"},
@@ -33,7 +32,7 @@ class HomeController {
     {"title": "data 2", "value": "200"},
     {"title": "data 3", "value": "600"}
   ];
-/////////////////////
+
   List<Map<String, dynamic>> goalTypeData = [
     {
       'title': "Car",
@@ -80,5 +79,4 @@ class HomeController {
           e['title'], double.parse(e['value'].replaceAll(',', '')), getColor());
     }).toList();
   }
-  /////////////////////////
 }
