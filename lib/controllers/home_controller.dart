@@ -76,6 +76,14 @@ class HomeController {
     print(data);
   }
 
+  void listMani(String title){
+   myDataList.removeAt(myDataList.indexWhere((element) => element['title'] == title));
+   print('one removed ${myDataList.length}');
+   }
+    
+  
+
+
   List<Map<String, dynamic>> myData = [
     {"title": "data 1", "value": "100"},
     {"title": "data 2", "value": "200"},

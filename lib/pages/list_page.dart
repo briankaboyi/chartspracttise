@@ -6,12 +6,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
 class ListPage extends GetView<HomeController> {
-
   @override
   Widget build(BuildContext context) {
-  print(controller.myDataList);
-
-
     // TODO: implement build
     return Scaffold(
         appBar: AppBar(
@@ -23,15 +19,17 @@ class ListPage extends GetView<HomeController> {
             fontWeight: FontWeight.bold,
           ),
         )),
-        body: ListView.builder(
+        body: Obx(() => ListView.builder(
             itemCount: controller.myDataList.length,
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: InkWell(
                   onTap: () {
-                  
-                    Get.to(ListInfo(index:index));
+                    controller.listMani(controller.myDataList[index]['title']);
+                    print(
+                        'dddddddddddddddddddddd       ${controller.myDataList.length}');
+                    // Get.to(ListInfo(index:index));
                   },
                   child: Container(
                     width: Get.width,
@@ -47,6 +45,6 @@ class ListPage extends GetView<HomeController> {
                   ),
                 ),
               );
-            }));
+            })));
   }
 }
