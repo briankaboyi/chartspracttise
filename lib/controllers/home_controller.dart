@@ -3,15 +3,37 @@ import 'dart:math';
 import 'package:dougnut/entity/chart_data.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:localstorage/localstorage.dart';
 
 class HomeController {
-  List<Map<String, dynamic>> myDataList = [
-    {"title": "data 1", "value": "100" ,"subtitle": "my data 1",},
-    {"title": "data 2", "value": "200","subtitle": "my data 2",},
-    {"title": "data 3", "value": "300","subtitle": "my data 3",},
-    {"title": "data 4", "value": "900","subtitle": "my data 4",},
-    {"title": "data 5", "value": "100","subtitle": "my data 5",}
+  final LocalStorage storage = new LocalStorage('some_key');
 
+  List<Map<String, dynamic>> myDataList = [
+    {
+      "title": "data 1",
+      "value": "100",
+      "subtitle": "my data 1",
+    },
+    {
+      "title": "data 2",
+      "value": "200",
+      "subtitle": "my data 2",
+    },
+    {
+      "title": "data 3",
+      "value": "300",
+      "subtitle": "my data 3",
+    },
+    {
+      "title": "data 4",
+      "value": "900",
+      "subtitle": "my data 4",
+    },
+    {
+      "title": "data 5",
+      "value": "100",
+      "subtitle": "my data 5",
+    }
   ];
   String inputValue = "";
   var content;
@@ -24,9 +46,36 @@ class HomeController {
   var myDateForat;
   String currentDate = '';
 
+  //////////////////////////////
+
   HomeController() {
     currentDate = '${myDate.day}-${myDate.month}-${myDate.year}';
+    // return FutureBuilder(
+    //   future: storage.ready,
+    //   builder: (BuildContext context, snapshot) {
+    //     if (snapshot.data == true) {
+    //       Map<String, dynamic> data = storage.getItem('key');
+
+    //       return SomeDataView(data: data);
+    //     } else {
+    //       return SomeLoadingStateWidget();
+    //     }
+    //   },
+    // )
+
+    print('dddddddddddddddddddddprint is working');
   }
+
+  void testLocal() {
+    storage.setItem('goals', []);
+    var data = storage.getItem('goals');
+    data.add({ "title": "data 1",
+      "value": "100",
+      "subtitle": "my data 1",});
+      storage.setItem('goals',data);
+    print(data);
+  }
+
   List<Map<String, dynamic>> myData = [
     {"title": "data 1", "value": "100"},
     {"title": "data 2", "value": "200"},

@@ -6,9 +6,11 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
 class ListPage extends GetView<HomeController> {
+
   @override
   Widget build(BuildContext context) {
-    print(',,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,${controller.myDataList[0]}');
+  print(controller.myDataList);
+
 
     // TODO: implement build
     return Scaffold(
@@ -28,8 +30,7 @@ class ListPage extends GetView<HomeController> {
                 padding: const EdgeInsets.all(8.0),
                 child: InkWell(
                   onTap: () {
-                    print(
-                        '${controller.myDataList[index]['title']} tapped ..........................');
+                  
                     Get.to(ListInfo(index:index));
                   },
                   child: Container(
